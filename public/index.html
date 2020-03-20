@@ -14,7 +14,6 @@
     <div id="app" class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3 col-sm-12">
-                    <h1 class="text-center">{{ title }}</h1>
                     <br>
                     <div id="status"></div>
                     <div id="chat">
@@ -23,7 +22,16 @@
                         <div class="card">
                             <div id="messages" class="card-block">
                                 <ul>
-                                    <li v-for="message of messages">{{ message.name }}: {{ message.text }}</li>
+                                    <li v-for="message in messages">
+                                        <div  v-if="message.type !== 'admin'" class="message" >
+                                            <div class="message-name">{{ message.name }}:</div>
+                                            <div class="message-body">{{ message.text }}</div>
+                                        </div>
+                                        <div v-else class="message">
+                                            <div class="message-name">{{ message.name }}:</div>
+                                            <div class="message-body"><p v-for="job in message.jobs">{{job.name}}</p></div>  
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

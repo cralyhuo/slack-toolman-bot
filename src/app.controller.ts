@@ -11,7 +11,6 @@ export class AppController {
 
   @Get()
   getBase(@Res() res) {
-    // res.sendFile("public/index.html");
     this.logger.log(__dirname);
     res.sendFile(path.join(__dirname, 'index.html'), { root: path.resolve(__dirname + '/public') });
   }
